@@ -1,0 +1,6 @@
+
+# List of Python dependencies
+# Example:
+# requests
+# python-dotenv
+# sqlalchemy
