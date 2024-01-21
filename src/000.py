@@ -79,7 +79,7 @@ class Chatbot:
         key_points = self.nlp_engine.extract_key_points(user_input)
         user_prefs = self.interaction_manager.get_user_preferences(user_id)
         response = self.response_generator.generate_response(key_points, user_prefs)
-
+        
         self.interaction_manager.update_chat_history(user_id, response)
         self.interaction_manager.remember_key_points(user_id, key_points)
         return response
@@ -101,10 +101,10 @@ class EnhancedChatbot(Chatbot):
         emotion = self.analyze_emotion(user_input)
         key_points = self.nlp_engine.extract_key_points(user_input)
         user_prefs = self.interaction_manager.get_user_preferences(user_id)
-
+        
         # Enhanced response generation with emotion
         response = self.response_generator.generate_response(key_points, user_prefs, emotion)
-
+        
         self.interaction_manager.update_chat_history(user_id, response)
         self.remember_key_points(user_id, key_points)
         return response
@@ -205,7 +205,7 @@ class EnhancedChatbot:
         emotion = self.analyze_emotion(user_input)
         key_points = self.nlp_engine.extract_key_points(user_input)
         user_prefs = self.interaction_manager.get_user_preferences(user_id)
-
+        
         response = self.response_generator.generate_response(key_points, user_prefs, emotion)
         self.interaction_manager.update_chat_history(user_id, response)
         self.interaction_manager.remember_key_points(user_id, key_points)
@@ -217,3 +217,4 @@ chatbot.interaction_manager.customize_response_style("user123", "informal")
 user_input = "Tell me about the latest trends in AI."
 response = chatbot.handle_user_interaction("user123", user_input)
 print(response)
+.

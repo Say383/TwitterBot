@@ -1,3 +1,4 @@
+
 -- SQL schema for the Twitter bot database
 CREATE TABLE users (
     id INT PRIMARY KEY,

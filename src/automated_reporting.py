@@ -16,7 +16,7 @@ def send_email_report(report_content, recipient_email):
     msg['To'] = recipient_email
     msg['Subject'] = 'Twitter Bot Analytics Report'
     msg.attach(MIMEText(report_content, 'plain'))
-
+    
     server = smtplib.SMTP('smtp.example.com', 587)
     server.starttls()
     server.login(msg['From'], 'password')
