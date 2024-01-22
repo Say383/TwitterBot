@@ -1,9 +1,6 @@
 
 class Config:
-    # Configuration parameters for the Twitter bot
-    TWITTER_API_KEY = 'your_twitter_api_key'
-    TWITTER_API_SECRET = 'your_twitter_api_secret'
-    TWITTER_ACCESS_TOKEN = 'your_access_token'
-    TWITTER_ACCESS_TOKEN_SECRET = 'your_access_token_secret'
-
-    # Additional configuration parameters can be added here
+    API_KEY = "your_api_key"
+    API_SECRET_KEY = "your_api_secret_key"
+    ACCESS_TOKEN = "your_access_token"
+    ACCESS_TOKEN_SECRET = "your_access_token_secret"

@@ -1,13 +1,9 @@
-import subprocess
 
-class RecoveryManager:
-    def __init__(self, db_uri):
-        self.db_uri = db_uri
-
-    def perform_recovery(self, backup_file):
-        command = f'mysql -u user -p'password' {self.db_uri} < {backup_file}'
-        subprocess.run(command, shell=True)
-        print(f'Recovery performed from {backup_file}')
+# Function to perform recovery from a backup file
+def perform_recovery(backup_file, database_uri):
+    command = f'mysql -u user -p'password' {database_uri} < {backup_file}'
+    subprocess.run(command, shell=True)
+    print(f'Recovery performed from {backup_file}')
 
 # Function to test recovery process
 def test_recovery():

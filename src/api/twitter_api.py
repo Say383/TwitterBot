@@ -1,46 +1,32 @@
 
 import tweepy
-import logging
+from tweepy import OAuthHandler, Stream, StreamListener
 
 class TwitterAPI:
-    """A wrapper class for interacting with the Twitter API using Tweepy."""
-
-    def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret):
-        """
-        Initializes the TwitterAPI with OAuth credentials.
-        
-        :param consumer_key: Twitter API consumer key
-        :param consumer_secret: Twitter API consumer secret
-        :param access_token: Twitter API access token
-        :param access_token_secret: Twitter API access token secret
-        """
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    def __init__(self, api_key, api_secret_key, access_token, access_token_secret):
+        auth = OAuthHandler(api_key, api_secret_key)
         auth.set_access_token(access_token, access_token_secret)
         self.api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
     def post_tweet(self, message):
-        """
-        Posts a tweet to Twitter.
-
-        :param message: The message to be tweeted
-        :return: The tweet object or error message
-        """
         try:
-            tweet = self.api.update_status(message)
-            return tweet
+            self.api.update_status(message)
         except tweepy.TweepError as e:
-            logging.error(f"An error occurred while posting a tweet: {e}")
-            return {"error": str(e)}
+            print(f'Error: {e.reason}')
 
-    def get_mentions(self):
-        """
-        Retrieves the latest mentions for the authenticated user.
-
-        :return: A list of mention objects or an error message
-        """
+    def search_tweets(self, query, count=10):
         try:
-            mentions = self.api.mentions_timeline()
-            return mentions
+            return self.api.search(q=query, count=count)
         except tweepy.TweepError as e:
-            logging.error(f"An error occurred while fetching mentions: {e}")
-            return {"error": str(e)}
+            print(f'Error: {e.reason}')
+            return []
+
+class MyStreamListener(StreamListener):
+    def on_status(self, status):
+        print(status.text)
+
+    def on_error(self, status_code):
+        if status_code == 420:
+            # Returning False disconnects the stream
+            return False
+        print(f'Encountered streaming error (status code: {status_code})')
