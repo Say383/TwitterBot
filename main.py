@@ -4,6 +4,7 @@ from textblob import TextBlob
 from tweepy import OAuthHandler, API
 from dotenv import load_dotenv
 from src.utils.logger import Logger
+from datetime import datetime
 
 # Load environment variables
 load_dotenv()
@@ -90,9 +91,10 @@ def listen_for_tweets_and_requests():
     new_tweet = api.mentions_timeline(count=1)[0]
     return new_tweet.id_str, new_tweet.text
 
-def log_interaction(tweet_id, response):
+def log_interaction(tweet_id, response, username):
     with open('bot_log.txt', 'a') as log_file:
-        log_file.write(f"Responded to tweet ID {tweet_id} with message: {response}\n")
-
+        log_file.write(f"{datetime.now()}: Responded to tweet ID {tweet_id} "
+                       f"from user {username} with message: {response}\n")def log_interaction(tweet_id, response):
+    
 if __name__ == '__main__':
     start_bot()
