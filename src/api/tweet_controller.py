@@ -3,7 +3,13 @@ from src.utils.logger import Logger
 
 class TweetController:
     def __init__(self, config, logger, ai_component):
-        self.twitter_api = TwitterAPI(config)
+        twitter_api_config = {
+            "api_key": config["api_key"],
+            "api_secret_key": config["api_secret_key"],
+            "access_token": config["access_token"],
+            "access_token_secret": config["access_token_secret"]
+        }
+        self.twitter_api = TwitterAPI(twitter_api_config)
         self.logger = logger
         self.ai_component = ai_component
 
