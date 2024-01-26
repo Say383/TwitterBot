@@ -1,4 +1,3 @@
-
 from src.api.tweet_controller import TweetController
 from src.services.ai_ml_component import AILearningComponent
 from src.utils.logger import Logger
@@ -8,13 +7,13 @@ from src.config.config import Config
 # Setup logger for error handling and logging
 logger = Logger()
 
-# Configuration setup
-config = Config()
-
-# Initialize AI/ML component
-ai_component = AILearningComponent()
-
 def main():
+    # Configuration setup
+    config = Config()
+
+    # Initialize AI/ML component
+    ai_component = AILearningComponent()
+
     # Initialize the TweetController with necessary dependencies
     tweet_controller = TweetController(config, logger, ai_component)
     
@@ -36,6 +35,7 @@ def main():
         except Exception as e:
             # Log any exceptions that occur
             logger.log_error(str(e))
+            # TODO: add more specific error handling here if necessary
 
     # Implement shutdown and cleanup if necessary
     # ...
