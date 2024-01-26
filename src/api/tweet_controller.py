@@ -1,4 +1,3 @@
-
 from src.api.twitter_api import TwitterAPI
 from src.utils.logger import Logger
 
@@ -9,12 +8,12 @@ class TweetController:
         self.ai_component = ai_component
 
     def listen_for_tweets(self):
-        # Code to listen for new tweets based on specific criteria or streaming
-        pass
+        # Fetch new tweets from TwitterAPI
+        return self.twitter_api.get_new_tweets()
 
-    def process_data(self, data):
-        # Code to process incoming data, extract information, and prepare response
-        pass
+    def process_tweet_data(self, data):
+        # Process incoming tweet data, and prepare response
+        return self.ai_component.prepare_response(data)
 
     def post_tweet(self, message):
         # Code to post a tweet using the Twitter API
