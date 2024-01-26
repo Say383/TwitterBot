@@ -21,6 +21,25 @@ class PortfolioTracker:
             gains_losses[coin_id] = (current_price - purchase_price) * amount
         return gains_losses
 
+class Asset:
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
+
+class Stock(Asset):
+    def __init__(self, name, value, ticker_symbol):
+        super().__init__(name, value)
+        self.ticker_symbol = ticker_symbol
+
+class Bond(Asset):
+    def __init__(self, name, value, interest_rate):
+        super().__init__(name, value)
+        self.interest_rate = interest_rate
+
+# Usage
+my_stock = Stock("TechCorp", 1500, "TC")
+my_bond = Bond("GovBond", 1000, 0.05)
+
 # Usage
 portfolio = PortfolioTracker()
 portfolio.update_prices()
