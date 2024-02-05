@@ -28,7 +28,7 @@ class ResponseFactory:
             "Don't miss out on the next big thing in crypto - FlorkyCoin. 💰",
             "Join the FlorkyCoin revolution today and be a part of the future. 🔮",
         ]
-    
+
     def create_response(self, tweet_text):
         sentiment = self.analyze_sentiment(tweet_text)
         if 'FlorkyCoin' in tweet_text.lower():
@@ -94,7 +94,8 @@ def listen_for_tweets_and_requests():
 def log_interaction(tweet_id, response, username):
     with open('bot_log.txt', 'a') as log_file:
         log_file.write(f"{datetime.now()}: Responded to tweet ID {tweet_id} "
-                       f"from user {username} with message: {response}\n")def log_interaction(tweet_id, response):
-    
-if __name__ == '__main__':
-    start_bot()
+                       f"from user {username} with message: {response}\n")
+        def log_interaction(tweet_id, response):
+
+
+if __name__ == '__main__':    start_bot()
